@@ -14,7 +14,7 @@
   "templates.reply-argument.body": "Hai una nuova risposta su di voi argomento",
   "templates.reply-argument.body2": "Si prega di <a href=\"URL\">cliccare qui</a> per vederlo",
 
-  "templates.law-published.subject": "Nuova legge pubblicato",
+  "templates.topic-published.subject": "Nuova legge pubblicato",
   "templates.law-published.body": "Una nuova legge è stata pubblicata:",
   "templates.law-published.body2": "Si prega di <a href=\"URL\">cliccare qui</a> per vederlo"
 }
