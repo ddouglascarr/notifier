@@ -229,6 +229,10 @@ Check the following code for guidance.
 * [example/server.js](example/server.js) with ready to use `notifier` server.
 * [production](https://github.com/likeastore/notifier/tree/production) version of notifier used by Likeastore
 
+## Notes on release 0.3.0
+
+This version of notifier is intended to be used with DemocracyOS ~1.0.0
+
 ## Used by
 
 * [Likeastore](https://likeastore.com)

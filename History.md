@@ -1,4 +1,10 @@
 
+0.3.0 / 2015-06-02
+==================
+
+  * Rename law to topic. Closes #35
+  * Update feed to new forum and topic format #35
+
 0.2.1 / 2015-03-25
 ==================
 
