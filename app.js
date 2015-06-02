@@ -8,7 +8,7 @@ require('./source/events/reply-argument')(notifier);
 require('./source/events/law-published')(notifier);
 require('./source/events/update-feed')(notifier);
 require('./source/events/topic-voted')(notifier);
-require('./source/events/law-commented')(notifier);
+require('./source/events/topic-commented')(notifier);
 
 // start the server
 notifier.start(config.port || 9001);
