@@ -2,61 +2,49 @@ var config = require('../../config');
 var db = require('../db')(config.db);
 var logger = require('../utils/logger');
 var ObjectId = require('mongojs').ObjectId;
+var eventName = 'topic-published';
+var updateFeed = 'update-feed';
 
 module.exports = function (notifier) {
   if (!notifier || typeof notifier != 'object') throw new Error('Unable to initialize lished event - Undefined notifier');
 
   // Receiver
   notifier
-    .receive('law-voted', function (event, actions, callback) {
+    .receive(eventName, function (event, actions, callback) {
       logger.info('Received event ' + JSON.stringify(event));
 
-      actions.create('law-voted',
+      var topic = event.topic;
+
+      actions.create(updateFeed,
         {
-          type: 'law-voted',
-          law: event.law,
-          user: event.user,
-          vote: event.vote,
-          instance: event.instance
+          type: eventName,
+          topic: topic.id
         },
         function (err) {
-          logger.info({message: 'Created "law-voted" action for law ' + event.law + ' in ' + event.instance });
+          logger.info({message: 'Created "update-feed" action for topic ' + topic.id });
           if (callback) callback(err);
         }
       );
     })
 
   // Resolver
-    .resolve('law-voted', function (action, actions, callback) {
+    .resolve(updateFeed, function (action, actions, callback) {
       logger.info('Resolving action ' + JSON.stringify(action));
 
-      var feed = {
-        type: action.type,
-        url: action.instance,
-        data: {
-                law: action.law,
-                user: action.user,
-                vote: action.vote
-              }
-      }
+      var feed = { topic: action.topic };
 
       actions.resolved(action, feed, callback);
     })
 
     // Executor
-    .execute('law-voted', function (action, transport, callback) {
+    .execute(updateFeed, function (action, transport, callback) {
       db.feeds.findOne({ url: action.instance }, function (err, feed) {
         if (err) return logger.err('Error found %s', err), callback(err);
 
         feed = feed || {};
-        feed.type = action.type;
-        feed.url = action.instance;
-        feed.feededAt = Date.now();
-        feed.data = {
-                      law: action.law,
-                      user: action.user,
-                      vote: action.vote
-                    };
+        feed.type = eventName;
+        feed.topic = action.topic;
+        feed.createdAt = Date.now();
 
         db.feeds.save(feed, function (err, feed) {
           if (err) return logger.err('Error found %s', err), callback(err);

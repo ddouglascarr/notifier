@@ -4,27 +4,28 @@ var logger = require('../utils/logger');
 var name = require('../utils/name');
 var templates = require('../templates');
 var t = require('../translations').t;
+var eventName = 'topic-published';
 
 module.exports = function (notifier) {
-  if (!notifier || typeof notifier != 'object') throw new Error('Unable to initialize law-published event - Undefined notifier');
+  if (!notifier || typeof notifier != 'object') throw new Error('Unable to initialize ' + eventName + ' event - Undefined notifier');
 
   // Receiver
   notifier
-    .receive('law-published', function (event, actions, callback) {
+    .receive(eventName, function (event, actions, callback) {
       logger.info('Received event ' + JSON.stringify(event));
 
       db.user.find({ 'notifications.new-topic': true }, function (err, users) {
         if (err) return callback(err);
 
         users.forEach(function (user) {
-          actions.create('law-published',
+          actions.create(eventName,
             {
-              law: event.law,
+              topic: event.topic,
               url: event.url,
               user: { name: name.format(user), email: user.email }
             },
             function (err) {
-              logger.info({ message: 'Created "law-published" action for law ' + event.law.mediaTitle });
+              logger.info({ message: 'Created ' + eventName + ' action for topic ' + event.topic });
               callback && callback(err);
             }
           );
@@ -34,12 +35,12 @@ module.exports = function (notifier) {
     })
 
   // Resolver
-    .resolve('law-published', function (action, actions, callback) {
+    .resolve(eventName, function (action, actions, callback) {
       logger.info('Resolving action ' + JSON.stringify(action));
 
       var data = {
         url: action.url,
-        law: action.law,
+        topic: action.topic,
         user: action.user
       };
 
@@ -47,18 +48,18 @@ module.exports = function (notifier) {
     })
 
     // Executor
-    .execute('law-published', function (action, transport, callback) {
-        var law = action.data.law;
+    .execute(eventName, function (action, transport, callback) {
+        var topic = action.data.topic;
         var url = action.data.url;
         var user = action.data.user;
 
         var vars = [
-          {name: 'LAW', content: law.mediaTitle},
+          {name: 'LAW', content: topic.mediaTitle},
           {name: 'URL', content: url},
           {name: 'USER_NAME', content: user.name}
         ];
 
-        templates.jade('law-published', vars, function (err, content) {
+        templates.jade(eventName, vars, function (err, content) {
           logger.info('Notifying user ' + user.email);
 
           transport.mandrill('/messages/send', {
@@ -68,7 +69,7 @@ module.exports = function (notifier) {
               preserve_recipients: false,
               from_email: config.transport.mandrill.from.email,
               from_name: config.transport.mandrill.from.name,
-              subject: t('templates.law-published.subject'),
+              subject: t('templates.topic-published.subject'),
               text: content,
               html: content,
               auto_text: true
