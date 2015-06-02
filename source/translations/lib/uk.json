@@ -14,7 +14,7 @@
   "templates.reply-argument.body": "Хтось дав відповідь на Ваш аргумент:",
   "templates.reply-argument.body2": "Будь ласка <a href=\"URL\">натисніть сюди</a> щоб побачити її.",
 
-  "templates.law-published.subject": "Опубліковано новий закон",
+  "templates.topic-published.subject": "Опубліковано новий закон",
   "templates.law-published.body": "Новий закон був опублікований:",
   "templates.law-published.body2": "Будь ласка <a href=\"URL\">натисніть сюди</a> щоб побачити його."
 }
