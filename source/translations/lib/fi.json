@@ -7,7 +7,7 @@
   "templates.welcome-email.ps": "Jos et rekisteröitynyt, älä huomioi tätä viestiä.",
 
   "templates.forgot-password.subject": "Vaaditaan salasanan päivitys",
-  "templates.forgot-password.body": "Ole hyvä <a href=\"{url}\">klikkaa tästä</a> vaihtaaksesi salasanasi",
+  "templates.forgot-password.body": "Ole hyvä <a href=\"RESET_PASSWORD_URL\">klikkaa tästä</a> vaihtaaksesi salasanasi",
   "templates.forgot-password.ps": "Jos et pyytänyt salasanan uusintaa, älä huomioi tätä viestiä.",
 
   "templates.reply-argument.subject": "Joku vastasi perustelunne",

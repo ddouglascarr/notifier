@@ -7,7 +7,7 @@
   "templates.welcome-email.ps": "Si vous n' avez pas creé un compte sur DemocracyOS, ignorez s' il vous plaît ce courriel.",
 
   "templates.forgot-password.subject": "DemocracyOS - Rétablir mot de passe",
-  "templates.forgot-password.body": "Cliquez s' il vous plaît <a href=\"{url}\">sur ici</a> pour rétablir ton mot de passe",
+  "templates.forgot-password.body": "Cliquez s' il vous plaît <a href=\"RESET_PASSWORD_URL\">sur ici</a> pour rétablir ton mot de passe",
   "templates.forgot-password.ps": "Si vous n' avez pas demandé le rétablissement de votre mot de passe, ignorez s' il vous plaît ce courriel",
 
   "templates.reply-argument.subject": "Quelqu'un a répondu à vos arguments",
