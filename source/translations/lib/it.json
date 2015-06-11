@@ -7,7 +7,7 @@
   "templates.welcome-email.ps": "P.S.: se non hai firmato in Democracyos preghiamo di ignorare questa email.",
 
   "templates.forgot-password.subject": "Reimpostare la password",
-  "templates.forgot-password.body": "Per favore <a href=\"{url}\">clicca qui</a> per reimpostare la password",
+  "templates.forgot-password.body": "Per favore <a href=\"RESET_PASSWORD_URL\">clicca qui</a> per reimpostare la password",
   "templates.forgot-password.ps": "P.S.: se non hai richiesto di reimpostare la password, ignorare questa email",
 
   "templates.reply-argument.subject": "Qualcuno ha risposto al tuo argomento",

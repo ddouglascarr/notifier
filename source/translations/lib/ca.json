@@ -7,7 +7,7 @@
   "templates.welcome-email.ps": "P.D.: Si no has creat un compte a DemocracyOS, si us plau ignora aquest correu.",
 
   "templates.forgot-password.subject": "Generar una nova contrasenya",
-  "templates.forgot-password.body": "Si us plau, <a href=\"{url}\">cliqui aquí</a> per generar la teva contrasenya",
+  "templates.forgot-password.body": "Si us plau, <a href=\"RESET_PASSWORD_URL\">cliqui aquí</a> per generar la teva contrasenya",
   "templates.forgot-password.ps": "P.D.: Si no has generat la teva contrasenya, si us plau ignora aquest correu",
 
   "templates.reply-argument.subject": "Algú va respondre al seu argument",
