@@ -53,9 +53,10 @@ module.exports = function (notifier) {
         var user = action.data.user;
 
         var vars = [
-          {name: 'LAW', content: law.mediaTitle},
-          {name: 'URL', content: url},
-          {name: 'USER_NAME', content: user.name}
+          { name: 'LAW', content: law.mediaTitle },
+          { name: 'URL', content: url },
+          { name: 'USER_NAME', content: user.name },
+          { name: 'SIGNATURE', content: config.transport.mandrill.from.name }
         ];
 
         templates.jade('law-published', vars, function (err, content) {

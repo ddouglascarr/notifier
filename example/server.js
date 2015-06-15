@@ -75,7 +75,7 @@ notifier
 			title: 'This is a tite',
 			message: "Hi there."
 		};
-		
+
 		transport.android.push({ message: message, regIds: regIds, retries: 3}, callback);
 	});
 
@@ -100,7 +100,7 @@ notifier
 			title: 'This is a tite',
 			message: "Hi there."
 		};
-		
+
 		transport.android.push({ message: message, regIds: regIds, retries: 3 }, function (err, result) {
 			if (result.failure === 1) {
 				var data = {
