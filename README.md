@@ -2,6 +2,10 @@
 
 HTTP API that receives the event and turning that event into corresponding notification.
 
+## Note about 1.0.0 branch
+
+This version of `notifier` is intended to be used **only** with DemocracyOS ~1.0.0
+
 ## API
 
 The entry point of application responsible for initializing the `notifier`.
@@ -228,10 +232,6 @@ Check the following code for guidance.
 
 * [example/server.js](example/server.js) with ready to use `notifier` server.
 * [production](https://github.com/likeastore/notifier/tree/production) version of notifier used by Likeastore
-
-## Notes on release 0.3.0
-
-This version of notifier is intended to be used with DemocracyOS ~1.0.0
 
 ## Used by
 
