@@ -15,10 +15,13 @@ EXPOSE 9001
 ENV NODE_ENV docker
 WORKDIR /opt/notifier
 
-ENTRYPOINT ["make"]
+ENTRYPOINT ["make", "run"]
 
 
-# To run, linked to a library/mongo image and using local source
-# npm install will have to have been run locally
-# $ docker run -it --link host_mongo:mongo -v /local/path/to/repo/notifier:/opt/notifier --name notifier democracyos-notifier
+# To launch:
+# docker run -it \
+#     --link dos-mongo:mongo \
+#     -v /local/path/to/repo/notifier:/opt/notifier \
+#     --name dos-notifier_0 \
+#     democracyos-notifier
 
